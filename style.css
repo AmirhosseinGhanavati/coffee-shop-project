@@ -1285,7 +1285,7 @@ menu-tab:hover {
   color: var(--accent-bright);
 }
 
-.menu-add{
+.menu-add {
   width: 40px;
   height: 40px;
   background: var(--bg);
@@ -1295,12 +1295,12 @@ menu-tab:hover {
   transition: all 0.3s var(--ease);
 }
 
-.menu-add:hover{
+.menu-add:hover {
   background: var(--accent-bright);
   transform: rotate(90deg);
 }
 
-.menu-card-tags{
+.menu-card-tags {
   display: flex;
   gap: 6px;
   margin-top: 12px;
@@ -1309,7 +1309,7 @@ menu-tab:hover {
   z-index: 1;
 }
 
-.menu-card-tags span{
+.menu-card-tags span {
   font-size: 10px;
   padding: 3px 8px;
   background: rgba(200, 153, 104, 0.1);
@@ -1317,8 +1317,89 @@ menu-tab:hover {
   border-radius: 100%;
 }
 
-.menu-card{animation: 0.6s var(--ease-out) backwards;}
-@keyframes cardIn{
-  from {opacity: 0; transform: translateY(20px);}
+.menu-card {
+  animation: 0.6s var(--ease-out) backwards;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.gallery {
+  padding: 120px 0;
+}
+
+.gallery-grid {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 240px 240px;
+  gap: 20px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.g1 {
+  grid-column: 2;
+}
+
+.g4 {
+  grid-column: 2;
+}
+
+.g-card {
+  width: 100px;
+  height: 100%;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  transition: 0.6s var(--ease);
+  cursor: pointer;
+}
+
+.g-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bg,radial-gradient(135deg, #3a2418, #1a0e08));
+  opacity: 0.9;
+  z-index: 0;
+}
+
+.g-emoji{
+  font-size: 64px;
+  z-index: 1;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+  transition: 0.5s var(--ease);
+}
+
+.g-card h4{
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-style: italic;
+  color: var(--ink);
+  z-index: 1;
+  transition: 0.5s var(--ease);
+}
+
+.gallery-item:hover .g-card{transform: scale(1.02);}
+.gallery-item:hover .g-emoji{ transform: scale(1.2) rotate(-10deg);}
+.gallery-item:hover .g-card h4{transform: translateY(4px);}
+
+@media (max-width:800px) {
+  .gallery-grid{grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3,200px);}
+  .g1 , .g4 {grid-column: 1;}
 }
 
