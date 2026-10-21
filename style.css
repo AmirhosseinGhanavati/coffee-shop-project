@@ -1896,3 +1896,22 @@ menu-tab:hover {
   background: var(--accent-bright);
   transform: translateY(-4px);
 }
+
+.reveal{
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.8s var(--ease-out) , 0.8s var(--ease-out);
+  transition-delay: var(--delay , 0ms) ;
+}
+
+.reveal.in{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+::-webkit-scrollbar{width: 10;}
+::-webkit-scrollbar-track{background: var(--bg);}
+::-webkit-scrollbar-thumb{background: var(--accent-deep); border-radius: 10px;}
+::-webkit-scrollbar-thumb:hover{background: var(--accent);}
+
+::selection {background: var(--accent); color: var(--bg);}
