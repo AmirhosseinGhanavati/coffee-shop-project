@@ -328,41 +328,49 @@ testiTrack.innerHTML = testimonials.map(t => {
     `;
 }).join('');
 
-if (testiDots) {
-  testiDots.innerHTML = '';
-  for (let i = 0; i<= maxIndex; i++) {
-    const dot = document.createElement('div');
-    dot.className = 'testi-dot' + (i === testiIndex ? 'active' : '');
-    dot.addEventListener('click' , ()=> {
-      testiIndex = i;
-      updateTestiPosition();
-    });
-    testiDots.appendChild(dot);
+  if (testiDots) {
+    testiDots.innerHTML = '';
+    for (let i = 0; i <= maxIndex; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'testi-dot' + (i === testiIndex ? ' active' : '');
+      dot.addEventListener('click', () => {
+        testiIndex = i;
+        updateTestiPosition();
+      });
+      testiDots.appendChild(dot);
+    }
   }
-}
- updateTestiPosition();
+  updateTestiPosition();
 }
 
 function updateTestiPosition() {
   if (!testiTrack) return;
-  const cards = $$('.testi-card' , testiTrack);
-  if(!cards.length) return;
-  const cardWidth = cards[0].offsetWidth + 24;
+  const cards = $$('.testi-card', testiTrack);
+  if (!cards.length) return;
+  const cardWidth = cards[0].offsetWidth + 24; // gap
   testiTrack.style.transform = `translateX(-${testiIndex * cardWidth}px)`;
 
-  $$('.testi-dot', testiDots).forEach((d,i) => {
-    d.classList.toggle('active' , i=== testiIndex);
+  $$('.testi-dot', testiDots).forEach((d, i) => {
+    d.classList.toggle('active', i === testiIndex);
   });
 }
 
-$('#testiPrev')?.addEventListener('cleck' , ()=> {
-  const cardsPerView = getCardsperView();
-  const maxIndex = Math.max(0 , testimonials.length - cardsPerView);
+$('#testiPrev')?.addEventListener('click', () => {
+  const cardsPerView = getCardsPerView();
+  const maxIndex = Math.max(0, testimonials.length - cardsPerView);
+  testiIndex = testiIndex > 0 ? testiIndex - 1 : maxIndex;
+  updateTestiPosition();
+});
+
+$('#testiNext')?.addEventListener('click', () => {
+  const cardsPerView = getCardsPerView();
+  const maxIndex = Math.max(0, testimonials.length - cardsPerView);
   testiIndex = testiIndex < maxIndex ? testiIndex + 1 : 0;
+  updateTestiPosition();
 });
 
 renderTestimonials();
-window.addEventListener('resize', ()=>{
+window.addEventListener('resize', () => {
   testiIndex = 0;
   renderTestimonials();
 });
