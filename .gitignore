@@ -1,0 +1,11 @@
+# --- baseline ---
+.env
+.env.local
+.env.*.local
+.secret
+*.pem
+*.key
+.tokens.cache.json
+.DS_Store
+Thumbs.db
+node_modules/
