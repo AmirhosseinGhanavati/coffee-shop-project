@@ -284,3 +284,85 @@ function renderMenu(filter = "all") {
     });
   });
 
+const testimonials = [
+  { name: 'Sarah Mitchell', role: 'Coffee Enthusiast', text: 'Ember & Brew has completely redefined my morning ritual. The pour over is nothing short of magic — every cup tastes like the origin it came from.', stars: 5 },
+  { name: 'David Chen', role: 'Local Regular', text: 'I walk past three coffee shops to get here. The atmosphere, the people, the beans — it\'s the full experience. Best latte in the city, hands down.', stars: 5 },
+  { name: 'Maya Patel', role: 'Food Blogger', text: 'As someone who\'s traveled the world for coffee, I can say with confidence: this place is special. The care in every step — from sourcing to roasting — shows in the cup.', stars: 5 },
+  { name: 'James Whitaker', role: 'Entrepreneur', text: 'My "thinking space" for the past 3 years. Quiet, warm, and the wifi never fails. The cold brew is dangerously addictive.', stars: 5 },
+  { name: 'Elena Rodriguez', role: 'Photographer', text: 'The aesthetic, the aroma, the friendly staff — Ember & Brew is a creative\'s haven. Plus their lavender latte is pure poetry.', stars: 5 },
+  { name: 'Marcus Kim', role: 'Software Engineer', text: 'Found my new office away from home. The AeroPress is a masterclass in precision, and the team actually knows their beans. Refreshing.', stars: 5 }
+];
+
+const tetstiTrack = $('#testiTrack');
+const testiDots = $('#testiDots');
+let testiIndex = 0;
+
+function getCardsperView() {
+  if (window.innerWidth<= 600) return 1;
+  if (window.innerWidth<= 900) return 2;
+  return 3;
+}
+
+function renderTestimonials() {
+  if (!testiTrack) return;
+  const total = testimonials.length;
+  const cardsPreView = getCardsPerView();
+  const maxIndex = Math.max(0 , total - cardsPreView);
+
+
+testiTrack.innerHTML = testimonials.map(t => {
+  const initials = t.name.split(' ').map(n =>n[0]).join('');
+  return `
+    <div class="testi-card">
+        <span class="testi-quote">"</span>
+        <div class="testi-stars">${'★'.repeat(t.stars)}</div>
+        <p class="testi-text">${t.text}</p>
+        <div class="testi-author">
+          <div class="testi-avatar">${initials}</div>
+          <div>
+            <div class="testi-name">${t.name}</div>
+            <div class="testi-role">${t.role}</div>
+          </div>
+        </div>
+      </div>
+    `;
+}).join('');
+
+if (testiDots) {
+  testiDots.innerHTML = '';
+  for (let i = 0; i<= maxIndex; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'testi-dot' + (i === testiIndex ? 'active' : '');
+    dot.addEventListener('click' , ()=> {
+      testiIndex = i;
+      updateTestiPosition();
+    });
+    testiDots.appendChild(dot);
+  }
+}
+ updateTestiPosition();
+}
+
+function updateTestiPosition() {
+  if (!testiTrack) return;
+  const cards = $$('.testi-card' , testiTrack);
+  if(!cards.length) return;
+  const cardWidth = cards[0].offsetWidth + 24;
+  testiTrack.style.transform = `translateX(-${testiIndex * cardWidth}px)`;
+
+  $$('.testi-dot', testiDots).forEach((d,i) => {
+    d.classList.toggle('active' , i=== testiIndex);
+  });
+}
+
+$('#testiPrev')?.addEventListener('cleck' , ()=> {
+  const cardsPerView = getCardsperView();
+  const maxIndex = Math.max(0 , testimonials.length - cardsPerView);
+  testiIndex = testiIndex < maxIndex ? testiIndex + 1 : 0;
+});
+
+renderTestimonials();
+window.addEventListener('resize', ()=>{
+  testiIndex = 0;
+  renderTestimonials();
+});
