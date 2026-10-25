@@ -10,7 +10,7 @@
         href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libre+Caslon+Condensed:ital,wght@0,400..700;1,400..700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
-    <title>Coffe Shop</title>
+    <title>Ember &amp; Brew — Artisan Coffee Shop</title>
 </head>
 
 <body>
@@ -36,7 +36,7 @@
 
     <!-- Navigation -->
     <header class="navbar" id="navbar">
-        <a href="#" class="logo">
+        <a href="#home" class="logo">
             <svg viewBox="0 0 40 40" class="logo-svg">
                 <path d="M8 14 L8 26 Q8 34 20 34 Q32 34 32 26 L32 14 Z" fill="none" stroke="currentColor"
                     stroke-width="2.5" />
@@ -44,17 +44,17 @@
                 <path d="M14 6 Q14 2 18 2 M20 6 Q20 2 24 2" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" />
             </svg>
-            <span>Ember & Brew</span>
+            <span>Ember &amp; Brew</span>
         </a>
         <nav class="nav-links">
-            <a href="#" class="nav-link">Home</a>
-            <a href="#" class="nav-link">About</a>
-            <a href="#" class="nav-link">Menu</a>
-            <a href="#" class="nav-link">Gallery</a>
-            <a href="#" class="nav-link">Reviews</a>
-            <a href="#" class="nav-link">Contanct</a>
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#menu" class="nav-link">Menu</a>
+            <a href="#gallery" class="nav-link">Gallery</a>
+            <a href="#testimonials" class="nav-link">Reviews</a>
+            <a href="#contact" class="nav-link">Contact</a>
         </nav>
-        <a href="#" class="nav-cta">Order Now</a>
+        <a href="#menu" class="nav-cta">Order Now</a>
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
             <span></span><span></span><span></span>
         </button>
@@ -74,8 +74,8 @@
                 <span class="dot"></span> Now Open • Est. 2014
             </div>
             <h1 class="hero-title">
-                <span class="line reveal" data-delay="100">where every</span>
-                <span class="line italic reveal" data-delay="200">sip tells</span>
+                <span class="line reveal" data-delay="100">Where every</span>
+                <span class="line italic reveal" data-delay="200">sip tells a</span>
                 <span class="line outline reveal" data-delay="300">story.</span>
             </h1>
             <p class="hero-subtitle reveal" data-delay="400">Small-batch roasters crafting ethically sourced,
@@ -103,7 +103,7 @@
             <div class="hero-stats reveal" data-delay="600">
                 <div class="stat">
                     <span class="stat-num" data-target="12">0</span><span class="stat-suffix">+</span>
-                    <span class="stat-label"> Years Crafting</span>
+                    <span class="stat-label">Years Crafting</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat">
@@ -113,7 +113,7 @@
                 <div class="stat-divider"></div>
                 <div class="stat">
                     <span class="stat-num" data-target="18">0</span><span class="stat-suffix">+</span>
-                    <span class="stat-label"> Origins Sourced</span>
+                    <span class="stat-label">Origins Sourced</span>
                 </div>
             </div>
         </div>
@@ -191,6 +191,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <a href="#about" class="scroll-cue">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </a>
     </section>
 
     <!-- marquee -->
@@ -292,7 +298,7 @@
                 </div>
 
                 <div class="about-text">
-                    <span class="section-tag">-Our Story</span>
+                    <span class="section-tag">— Our Story</span>
                     <h2 class="section-title">
                         A passion brewed in every <span class="italic">handcrafted cup.</span>
                     </h2>
@@ -308,48 +314,50 @@
 
                     <div class="about-features">
                         <div class="feature">
-                            <div class="feature-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path
-                                        d="M12 2v6M12 16v6M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M16 12h6M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24" />
-                                </svg>
-                            </div>
+                                <div class="feature-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M12 2v6M12 16v6M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M16 12h6M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24" />
+                                    </svg>
+                                </div>
                             <h4>Roasted Fresh</h4>
-                            <p>Small batches every Tuesday & Friday</p>
+                            <p>Small batches every Tuesday &amp; Friday</p>
                         </div>
                         <div class="feature">
-                            <div class="feature-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path
-                                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                                </svg>
-                            </div>
+                                <div class="feature-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                        <circle cx="12" cy="10" r="3" />
+                                    </svg>
+                                </div>
                             <h4>Direct Trade</h4>
                             <p>From farm to cup, ethically sourced</p>
                         </div>
                         <div class="feature">
-                            <div class="feature-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
-                                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
-                                    <path d="M4 22h16" />
-                                    <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
-                                    <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
-                                    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" /></svg>
-                            </div>
+                                <div class="feature-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                                    </svg>
+                                </div>
                             <h4>Made with Love</h4>
                             <p>Crafted by passionate baristas</p>
                         </div>
                         <div class="feature">
-                            <div class="feature-icon">
-                                svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                <circle cx="12" cy="10" r="3" /></svg>
-                            </div>
+                                <div class="feature-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+                                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+                                        <path d="M4 22h16" />
+                                        <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+                                        <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+                                        <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+                                    </svg>
+                                </div>
                             <h4>Award Winning</h4>
                             <p>Recognized by Specialty Coffee Assoc.</p>
                         </div>
@@ -363,8 +371,8 @@
     <section class="menu" id="menu">
         <div class="container">
             <div class="section-head">
-                <span class="section-tag">- The Menu</span>
-                <h2 class="section-title">Curated <span class="italic">flavors</span>for every mood.</h2>
+                <span class="section-tag">— The Menu</span>
+                <h2 class="section-title">Curated <span class="italic">flavors</span> for every mood.</h2>
                 <p class="section-sub">From bold espressos to delicate pour-overs — explore our signature creations.</p>
             </div>
             <div class="menu-tabs" role="tablist">
@@ -384,7 +392,7 @@
     <section class="gallery" id="gallery">
         <div class="container">
             <div class="section-head">
-                <span class="section-tag">- The Vibe</span>
+                <span class="section-tag">— The Vibe</span>
                 <h2 class="section-title">A space designed for <span class="italic">moments.</span></h2>
             </div>
             <div class="gallery-grid">
@@ -432,7 +440,7 @@
     <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-head">
-                <span class="section-tag">- Kind Words</span>
+                <span class="section-tag">— Kind Words</span>
                 <h2 class="section-title">Loved by <span class="italic">thousands.</span></h2>
             </div>
 
@@ -461,7 +469,7 @@
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-info">
-                    <span class="section-tag">- Visit Us</span>
+                    <span class="section-tag">— Visit Us</span>
                     <h2 class="section-title">Come Say <span class="italic">hello.</span></h2>
                     <p>Whether it's your morning ritual or a weekend unwind — our doors are always open.</p>
 
@@ -615,15 +623,15 @@
                             <path d="M14 6 Q14 2 18 2 M20 6 Q20 2 24 2" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" />
                         </svg>
-                        <span>Ember & Brew</span>
+                        <span>Ember &amp; Brew</span>
                     </a>
                     <p>Small-batch coffee, crafted with care and shared with love.</p>
                 </div>
                 <div class="footer-col">
-                    <h5>explore</h5>
+                    <h5>Explore</h5>
                     <a href="#about">Our Story</a>
                     <a href="#menu">Menu</a>
-                    <a href="#gallery">Gallrey</a>
+                    <a href="#gallery">Gallery</a>
                     <a href="#testimonials">Reviews</a>
                 </div>
                 <div class="footer-col">
@@ -640,14 +648,15 @@
                     <a href="#">Twitter</a>
                     <a href="#">YouTube</a>
                 </div>
-                <div class="footer-bottom">
-                    <span>© 2026 Ember & Brew. Crafted with care.</span>
-                    <span>Privacy · Terms · Cookies</span>
-                </div>
             </div>
+            <div class="footer-bottom">
+                <span>© 2026 Ember &amp; Brew. Crafted with care.</span>
+                <span>Privacy · Terms · Cookies</span>
+            </div>
+        </div>
     </footer>
 
-    <button class="back-top " id="backTop" aria-label="Back to top">
+    <button class="back-top" id="backTop" aria-label="Back to top">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
             stroke-linecap="round">
             <polyline points="18 15 12 9 6 15" /></svg>

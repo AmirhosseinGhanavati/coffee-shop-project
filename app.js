@@ -39,10 +39,10 @@ $$("a, button, .menu-card, .gallery-item, .nav-link, .social-btn").forEach(
   },
 );
 
-const particlesEl = $("particles");
+const particlesEl = $("#particles");
 if (particlesEl) {
   for (let i = 0; i < 24; i++) {
-    const p = document.createElemenet("div");
+    const p = document.createElement("div");
     p.className = "particle";
     const size = Math.random() * 3 + 1;
     p.style.width = size + "px";
@@ -57,7 +57,7 @@ if (particlesEl) {
 const navbar = $("#navbar");
 window.addEventListener("scroll", () => {
   if (window.scrollY > 30) navbar?.classList.add("scrolled");
-  else navbar?.classList.remove("scrooled");
+  else navbar?.classList.remove("scrolled");
 
   if (window.scrollY > 400) $("#backTop")?.classList.add("show");
   else $("#backTop")?.classList.remove("show");
@@ -107,6 +107,21 @@ const counterObserver = new IntersectionObserver(
   { threshold: 0.5 },
 );
 counters.forEach((c) => counterObserver.observe(c));
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const delay = entry.target.dataset.delay || 0;
+        entry.target.style.setProperty("--delay", delay + "ms");
+        entry.target.classList.add("in");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.1 },
+);
+$$(".reveal").forEach((el) => revealObserver.observe(el));
 
 const menuItems = [
   {
@@ -293,11 +308,11 @@ const testimonials = [
   { name: 'Marcus Kim', role: 'Software Engineer', text: 'Found my new office away from home. The AeroPress is a masterclass in precision, and the team actually knows their beans. Refreshing.', stars: 5 }
 ];
 
-const tetstiTrack = $('#testiTrack');
+const testiTrack = $('#testiTrack');
 const testiDots = $('#testiDots');
 let testiIndex = 0;
 
-function getCardsperView() {
+function getCardsPerView() {
   if (window.innerWidth<= 600) return 1;
   if (window.innerWidth<= 900) return 2;
   return 3;
@@ -306,8 +321,8 @@ function getCardsperView() {
 function renderTestimonials() {
   if (!testiTrack) return;
   const total = testimonials.length;
-  const cardsPreView = getCardsPerView();
-  const maxIndex = Math.max(0 , total - cardsPreView);
+  const cardsPerView = getCardsPerView();
+  const maxIndex = Math.max(0 , total - cardsPerView);
 
 
 testiTrack.innerHTML = testimonials.map(t => {
@@ -381,7 +396,7 @@ testiTrack?.addEventListener('mousedown' , (e)=>{
   isDragging = true;
   testiTrack.classList.add('dragging');
   startX = e.pageX;
-  scrollLeft = testiTrack * ($$('.tseti-card' , testiTrack)[0]?.offsetWidth + 24 || 0);
+  scrollLeft = testiIndex * ($$('.testi-card' , testiTrack)[0]?.offsetWidth + 24 || 0);
 });
 
 window.addEventListener('mousemove' , (e) =>{
@@ -397,7 +412,6 @@ window.addEventListener('mouseup' , (e)=>{
   testiTrack.classList.remove('dragging');
   const cards = $$('.testi-card' , testiTrack);
   if(!cards.length) return;
-  const cardWidth = cards[0].offsetWidth + 24;
   const diff = e.pageX - startX;
   if (Math.abs(diff) > 80) {
     if (diff < 0) $('#testiNext')?.click();
@@ -407,7 +421,7 @@ window.addEventListener('mouseup' , (e)=>{
 }
 });
 
-$('#contactForm')?.addEventListener('.submit' , (e)=>{
+$('#contactForm')?.addEventListener('submit' , (e)=>{
   e.preventDefault();
   const success = $('#formSuccess');
   success?.classList.add('show');
@@ -426,3 +440,40 @@ $('#newsletterForm')?.addEventListener('submit' , (e) =>{
   },2500);
 });
 
+$$('.menu-card').forEach(card =>{
+  card.addEventListener('mousemove' , (e) =>{
+    const rect =card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -4;
+    const rotateY = ((x - centerX) / centerX) * 4;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+  });
+  card.addEventListener('mouseleave' , () => {
+    card.style.transform = '';
+  });
+});
+
+$$('a[href^="#"]').forEach(anchor =>{
+  anchor.addEventListener('click' , function(e) {
+    const targetId = this.getAttribute('href');
+    if (targetId === '#') return;
+    const target = $(targetId);
+    if (target) {
+      e.preventDefault();
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({top , behavior : 'smooth'});
+    }
+  });
+});
+
+window.addEventListener('scroll', () => {
+   const scrolled = window.scrollY;
+   const heroCard = $('.hero-card');
+   if (heroCard && scrolled < window.innerHeight) {
+    heroCard.style.transform = `translateY(${scrolled * 0.15}px) rotate(${scrolled * 0.01}deg)`;
+   }
+});
