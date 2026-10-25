@@ -374,3 +374,55 @@ window.addEventListener('resize', () => {
   testiIndex = 0;
   renderTestimonials();
 });
+
+let isDragging = false , startX = 0, scrollLeft = 0;
+
+testiTrack?.addEventListener('mousedown' , (e)=>{
+  isDragging = true;
+  testiTrack.classList.add('dragging');
+  startX = e.pageX;
+  scrollLeft = testiTrack * ($$('.tseti-card' , testiTrack)[0]?.offsetWidth + 24 || 0);
+});
+
+window.addEventListener('mousemove' , (e) =>{
+  if (!isDragging) return;
+  const x = e.pageX;
+  const walk = (x - startX);
+  testiTrack.style.transform = `translateX(${-scrollLeft + walk}px)`;
+});
+
+window.addEventListener('mouseup' , (e)=>{
+  if (!isDragging) return;
+  isDragging = false;
+  testiTrack.classList.remove('dragging');
+  const cards = $$('.testi-card' , testiTrack);
+  if(!cards.length) return;
+  const cardWidth = cards[0].offsetWidth + 24;
+  const diff = e.pageX - startX;
+  if (Math.abs(diff) > 80) {
+    if (diff < 0) $('#testiNext')?.click();
+    else $('#testiPrev')?.click();
+} else {
+  updateTestiPosition();
+}
+});
+
+$('#contactForm')?.addEventListener('.submit' , (e)=>{
+  e.preventDefault();
+  const success = $('#formSuccess');
+  success?.classList.add('show');
+  setTimeout(() => success?.classList.remove('show'), 4000);
+  e.target.reset();
+});
+
+$('#newsletterForm')?.addEventListener('submit' , (e) =>{
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  const original = btn.textContent;
+  btn.textContent = '✓ Subscribed!';
+  setTimeout(() => {
+    btn.textContent = original;
+    e.target.reset();
+  },2500);
+});
+
